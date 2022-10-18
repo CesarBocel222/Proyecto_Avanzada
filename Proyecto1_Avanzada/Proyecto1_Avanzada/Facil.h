@@ -75,7 +75,7 @@ namespace Proyecto1Avanzada {
 			// lstColores
 			// 
 			this->lstColores->FormattingEnabled = true;
-			this->lstColores->Location = System::Drawing::Point(13, 114);
+			this->lstColores->Location = System::Drawing::Point(12, 109);
 			this->lstColores->Name = L"lstColores";
 			this->lstColores->Size = System::Drawing::Size(120, 95);
 			this->lstColores->TabIndex = 1;
@@ -108,7 +108,7 @@ namespace Proyecto1Avanzada {
 				   while (linea && (ColorQty < array_size)){
 
 					   array<String^>^ datos = linea->Split(',');
-
+					   
 
 					   linea = inputStream->ReadLine();
 					   ColorQty++;

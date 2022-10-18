@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Colores.h"
 namespace Proyecto1Avanzada {
 
 	using namespace System;
@@ -8,6 +8,7 @@ namespace Proyecto1Avanzada {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace IO;
 
 	/// <summary>
 	/// Resumen de Facil
@@ -21,6 +22,7 @@ namespace Proyecto1Avanzada {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			miscolores = gcnew array<Colores^>(array_size);
 		}
 
 	protected:
@@ -35,8 +37,10 @@ namespace Proyecto1Avanzada {
 			}
 		}
 	private: System::Windows::Forms::Button^ btnCargar1;
+	private: System::Windows::Forms::ListBox^ lstColores;
+	private: System::Windows::Forms::OpenFileDialog^ ofdArchivos;
 	protected:
-	private: System::Windows::Forms::ListBox^ listBox1;
+
 
 	private:
 		/// <summary>
@@ -52,7 +56,8 @@ namespace Proyecto1Avanzada {
 		void InitializeComponent(void)
 		{
 			this->btnCargar1 = (gcnew System::Windows::Forms::Button());
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
+			this->lstColores = (gcnew System::Windows::Forms::ListBox());
+			this->ofdArchivos = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->SuspendLayout();
 			// 
 			// btnCargar1
@@ -65,21 +70,26 @@ namespace Proyecto1Avanzada {
 			this->btnCargar1->TabIndex = 0;
 			this->btnCargar1->Text = L"Cargar Mapa ";
 			this->btnCargar1->UseVisualStyleBackColor = true;
+			this->btnCargar1->Click += gcnew System::EventHandler(this, &Facil::btnCargar1_Click);
 			// 
-			// listBox1
+			// lstColores
 			// 
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->Location = System::Drawing::Point(13, 114);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(120, 95);
-			this->listBox1->TabIndex = 1;
+			this->lstColores->FormattingEnabled = true;
+			this->lstColores->Location = System::Drawing::Point(13, 114);
+			this->lstColores->Name = L"lstColores";
+			this->lstColores->Size = System::Drawing::Size(120, 95);
+			this->lstColores->TabIndex = 1;
+			// 
+			// ofdArchivos
+			// 
+			this->ofdArchivos->FileName = L"openFileDialog1";
 			// 
 			// Facil
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(418, 295);
-			this->Controls->Add(this->listBox1);
+			this->Controls->Add(this->lstColores);
 			this->Controls->Add(this->btnCargar1);
 			this->Name = L"Facil";
 			this->Text = L"Facil";
@@ -87,5 +97,24 @@ namespace Proyecto1Avanzada {
 
 		}
 #pragma endregion
+		array<Colores^>^ miscolores;
+		int array_size = 100;
+		int ColorQty = 0;
+	private: System::Void btnCargar1_Click(System::Object^ sender, System::EventArgs^ e) {
+		   if (System::Windows::Forms::DialogResult::OK == ofdArchivos->ShowDialog()){
+			   StreamReader^ inputStream = gcnew StreamReader(ofdArchivos->FileName);
+			   if (inputStream != nullptr) {
+				   String^ linea = inputStream->ReadLine();
+				   while (linea && (ColorQty < array_size)){
+
+					   array<String^>^ datos = linea->Split(',');
+
+
+					   linea = inputStream->ReadLine();
+					   ColorQty++;
+				   }
+			   }
+		   }
+	}
 	};
 }

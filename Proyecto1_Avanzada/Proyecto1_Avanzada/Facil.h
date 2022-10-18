@@ -64,9 +64,10 @@ namespace Proyecto1Avanzada {
 			// 
 			this->btnCargar1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCargar1->Location = System::Drawing::Point(12, 12);
+			this->btnCargar1->Location = System::Drawing::Point(16, 15);
+			this->btnCargar1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnCargar1->Name = L"btnCargar1";
-			this->btnCargar1->Size = System::Drawing::Size(96, 71);
+			this->btnCargar1->Size = System::Drawing::Size(128, 87);
 			this->btnCargar1->TabIndex = 0;
 			this->btnCargar1->Text = L"Cargar Mapa ";
 			this->btnCargar1->UseVisualStyleBackColor = true;
@@ -75,9 +76,11 @@ namespace Proyecto1Avanzada {
 			// lstColores
 			// 
 			this->lstColores->FormattingEnabled = true;
-			this->lstColores->Location = System::Drawing::Point(12, 109);
+			this->lstColores->ItemHeight = 16;
+			this->lstColores->Location = System::Drawing::Point(13, 140);
+			this->lstColores->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->lstColores->Name = L"lstColores";
-			this->lstColores->Size = System::Drawing::Size(120, 95);
+			this->lstColores->Size = System::Drawing::Size(159, 116);
 			this->lstColores->TabIndex = 1;
 			// 
 			// ofdArchivos
@@ -86,11 +89,12 @@ namespace Proyecto1Avanzada {
 			// 
 			// Facil
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(418, 295);
+			this->ClientSize = System::Drawing::Size(557, 363);
 			this->Controls->Add(this->lstColores);
 			this->Controls->Add(this->btnCargar1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"Facil";
 			this->Text = L"Facil";
 			this->ResumeLayout(false);
